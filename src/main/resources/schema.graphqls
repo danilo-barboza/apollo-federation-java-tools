@@ -1,0 +1,16 @@
+# Let's say this is the Products service from Apollo Federation Introduction
+
+type Query {
+    allProducts: [Product]
+}
+
+type Product {
+    name: String
+    price: String
+}
+
+#these directives are defined in the Apollo Federation Specification: https://www.apollographql.com/docs/apollo-server/federation/federation-spec/
+type User @key(fields: "id") @extends {
+    id: ID! @external
+    recentPurchasedProducts: [Product]
+}
